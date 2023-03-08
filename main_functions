@@ -1,0 +1,40 @@
+def petrol(spend_for_100, way, price):
+
+    summ = round(way/100*spend_for_100*price, 2)
+
+    result = f'Общая сумма составит {summ}'
+    print(result)
+    return result
+
+
+# petrol(7, 150, 47.30)
+def km_to_miles(km_way):
+    miles_way = round(km_way*0.62, 3)
+    result = f'Расстоние в милях: {miles_way}'
+    print(result)
+    return result
+
+# km_to_miles(400)
+
+def miles_to_km(miles_way):
+    km_way = round(miles_way*1.61, 3)
+    result = f'Расстоние в километрах: {km_way}'
+    print(result)
+    return result
+
+# miles_to_km(233)
+def c_to_f(cel):
+    f = cel*1.8 + 32
+    result = round(f, 1)
+    print(result)
+    return result
+
+# c_to_f(100)
+
+def f_to_c(f):
+    cel = (f-32)/1.8
+    result = round(cel, 1)
+    print(result)
+    return result
+
+# f_to_c(100)
