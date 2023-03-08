@@ -1,0 +1,377 @@
+from PyQt5 import QtGui, QtWidgets
+from PyQt5.QtWidgets import QMainWindow, QApplication
+import sys
+from main_functions import *
+
+
+def applic():
+    app = QApplication(sys.argv)
+    window = QMainWindow()
+    window.setGeometry(200, 100, 650, 600)
+    window.setWindowTitle('Перевод величин')
+    window.setWindowIcon(QtGui.QIcon('img/logo.ico'))
+    window.setStyleSheet('background-color: #708090;')
+
+    choose_label = QtWidgets.QLabel(window)
+    choose_label.setGeometry(20, 20, 320, 50)
+    choose_label.setText('  Выберите действие')
+    choose_label.setStyleSheet("font-size: 18pt; font: Times New Roman; color: 	#32CD32; background-color: #696969; border-radius: 15px")
+
+    button_petrol = QtWidgets.QPushButton(window)
+    button_petrol.setGeometry(20, 100, 320, 50)
+    button_petrol.setText('Расход топлива')
+    button_petrol.setStyleSheet("font-size: 18pt;")
+
+    button_km = QtWidgets.QPushButton(window)
+    button_km.setGeometry(20, 150, 320, 50)
+    button_km.setText('Км --> мили')
+    button_km.setStyleSheet("font-size: 18pt;")
+
+    button_miles = QtWidgets.QPushButton(window)
+    button_miles.setGeometry(20, 200, 320, 50)
+    button_miles.setText('Мили --> км')
+    button_miles.setStyleSheet("font-size: 18pt;")
+
+    button_cel = QtWidgets.QPushButton(window)
+    button_cel.setGeometry(20, 250, 320, 50)
+    button_cel.setText('Цельсий ->Фаренгейт')
+    button_cel.setStyleSheet("font-size: 18pt;")
+
+    button_far = QtWidgets.QPushButton(window)
+    button_far.setGeometry(20, 300, 320, 50)
+    button_far.setText('Фаренгейт ->Цельсий')
+    button_far.setStyleSheet("font-size: 18pt;")
+
+    #### К функции c_petrol
+    #1
+    spend_label = QtWidgets.QLabel(window)
+    spend_label.setGeometry(20, 20, 400, 50)
+    spend_label.setText('Введите расход (в л/100 км)')
+    spend_label.setStyleSheet('font-size: 18pt; color: #32CD32; background-color: #000000')
+
+    spend_enter_line = QtWidgets.QLineEdit(window)
+    spend_enter_line.setGeometry(430, 20, 170, 50)
+    spend_enter_line.setStyleSheet('bacground: pink;')
+    spend_enter_line.setStyleSheet('font-size: 18pt; color: #32CD32; background-color: #000000')
+    #2
+    way_label = QtWidgets.QLabel(window)
+    way_label.setGeometry(20, 90, 400, 50)
+    way_label.setText('Введите путь (в км)')
+    way_label.setStyleSheet('font-size: 18pt;color: #32CD32; background-color: #000000')
+
+    way_enter_line = QtWidgets.QLineEdit(window)
+    way_enter_line.setGeometry(430, 90, 170, 50)
+    way_enter_line.setStyleSheet('font-size: 18pt;color: #32CD32; background-color: #000000')
+    #3
+    price_label = QtWidgets.QLabel(window)
+    price_label.setGeometry(20, 160, 400, 50)
+    price_label.setText('Введите стоимость литра')
+    price_label.setStyleSheet('font-size: 18pt;color: #32CD32; background-color: #000000')
+
+    price_enter_line = QtWidgets.QLineEdit(window)
+    price_enter_line.setGeometry(430, 160, 170, 50)
+    price_enter_line.setStyleSheet('font-size: 18pt;color: #32CD32; background-color: #000000')
+    # start
+    start_label = QtWidgets.QPushButton(window)
+    start_label.setGeometry(20, 250, 400, 50)
+    start_label.setText('Рассчитать')
+    start_label.setStyleSheet('font-size: 18pt; color: #32CD32; background-color: #000000')
+    # petrol_result
+    petrol_result_label = QtWidgets.QLabel(window)
+    petrol_result_label.setGeometry(20, 300, 580, 50)
+    petrol_result_label.setStyleSheet('font-size: 18pt;color: #32CD32; background-color: #000000')
+    # except_label
+    except_label = QtWidgets.QLabel(window)
+    except_label.setGeometry(20, 400, 400, 30)
+    except_label.setText('     Введены неверные данные')
+    except_label.setStyleSheet('font-size: 15pt; color: #32CD32; background-color: #000000; border-radius: 10px;')
+
+    # null_petrol_button
+    null_button = QtWidgets.QPushButton(window)
+    null_button.setGeometry(20, 450, 280, 30)
+    null_button.setText('Сбросить данные')
+    null_button.setStyleSheet('font-size: 10pt; background-color: gray')
+    # back_button
+    back_button = QtWidgets.QPushButton(window)
+    back_button.setGeometry(20, 520, 280, 30)
+    back_button.setText('Назад')
+    back_button.setStyleSheet('font-size: 10pt; background-color: gray')
+
+    #### К функции km_miles
+
+    label_km = QtWidgets.QLabel(window)
+    label_km.setGeometry(20, 20, 400, 50)
+    label_km.setText('Введите количество км')
+    label_km.setStyleSheet('font-size: 14pt;  color: #32CD32; background-color: #000000;')
+
+    km_enter_line = QtWidgets.QLineEdit(window)
+    km_enter_line.setGeometry(430, 20, 170, 50)
+    km_enter_line.setStyleSheet('bacground: pink;')
+    km_enter_line.setStyleSheet('font-size: 14pt; color: #32CD32; background-color: #000000;')
+
+    km_translate_into_miles_button = QtWidgets.QPushButton(window)
+    km_translate_into_miles_button.setGeometry(20, 90, 400, 50)
+    km_translate_into_miles_button.setStyleSheet('font-size: 18pt;  color: #32CD32; background-color: #000000;')
+
+    km_result_label = QtWidgets.QLabel(window)
+    km_result_label.setGeometry(20, 90, 400, 50)
+    km_result_label.setStyleSheet('font-size: 14pt;  color: #32CD32; background-color: #000000;')
+
+    null_km_button = QtWidgets.QPushButton(window)
+    null_km_button.setGeometry(20, 450, 280, 30)
+    null_km_button.setText('Сбросить данные')
+    null_km_button.setStyleSheet('font-size: 10pt; background-color: gray')
+
+    back_km_button = QtWidgets.QPushButton(window)
+    back_km_button.setGeometry(20, 520, 280, 30)
+    back_km_button.setText('Назад')
+    back_km_button.setStyleSheet('font-size: 10pt; background-color: gray')
+
+    def km_start():
+        print('Запустилась функция km_start')
+        clear_one()
+        km_enter_line.clear()
+        hide_all()
+        label_km.show()
+        km_enter_line.show()
+        km_translate_into_miles_button.setText('Перевести в мили')
+        km_translate_into_miles_button.setStyleSheet(' color: #32CD32; background-color: #000000; font-size: 14pt;')
+        km_translate_into_miles_button.clicked.connect(km_into_miles)
+        label_km.setText('Введите количество километров')
+        km_translate_into_miles_button.show()
+        back_km_button.show()
+
+
+    def km_into_miles():
+        try:
+            except_label.hide()
+            km_value = float(km_enter_line.text())
+            km_res = km_to_miles(km_value)
+            km_translate_into_miles_button.hide()
+            km_result_label.show()
+            km_result_label.setText(f'{km_res} миль')
+            null_km_button.show()
+        except:
+            km_enter_line.clear()
+            except_label.show()
+
+#### Раздел 3: перевод в миль в километры
+
+
+    def miles_to_km_start():
+        print('Запустилась функция miles_to_km')
+        clear_one()
+        km_enter_line.clear()
+        hide_all()
+        label_km.show()
+        km_enter_line.show()
+        km_translate_into_miles_button.setText('Перевести в километры')
+        km_translate_into_miles_button.setStyleSheet(' color: #32CD32; background-color: #000000; font-size: 14pt;')
+        km_translate_into_miles_button.clicked.connect(miles_to_kilometers)
+        label_km.setText('Введите количество миль')
+        km_translate_into_miles_button.show()
+
+        print('Перепрофилируем кнопку')
+        back_km_button.show()
+
+    def miles_to_kilometers():
+        try:
+            except_label.hide()
+            km_value = float(km_enter_line.text())
+            km_res = miles_to_km(km_value)
+            km_translate_into_miles_button.hide()
+            km_result_label.show()
+            km_result_label.setText(f'{km_res} километров')
+            null_km_button.show()
+        except:
+            km_enter_line.clear()
+            except_label.show()
+
+
+#### Раздел 4: цельсии в фаренгейты
+
+    def cels_to_km_fars_start():
+        print('Запустилась функция cels_to_km_fars_start')
+        clear_one()
+        km_enter_line.clear()
+        hide_all()
+        label_km.show()
+        km_enter_line.show()
+        km_translate_into_miles_button.setText('Перевести в фаренгейты')
+        km_translate_into_miles_button.setStyleSheet('background-color: green; font-size: 14pt;')
+        km_translate_into_miles_button.clicked.connect(cels_to_km_fars)
+        label_km.setText('Введите количество\nпо Цельсию')
+        km_translate_into_miles_button.show()
+
+        print('Перепрофилируем кнопку')
+        back_km_button.show()
+
+    def cels_to_km_fars():
+        try:
+            except_label.hide()
+            km_value = float(km_enter_line.text())
+            km_res = c_to_f(km_value)
+            km_translate_into_miles_button.hide()
+            km_result_label.show()
+            km_result_label.setText(f'{km_res} градусов по Фаренгейту')
+            null_km_button.show()
+        except:
+            km_enter_line.clear()
+            except_label.show()
+
+        #### Раздел 5: цельсии в фаренгейты
+
+    def fars_to_km_cels_start():
+        print('Запустилась функция fars_to_km_cels_start')
+        clear_one()
+        km_enter_line.clear()
+        hide_all()
+        label_km.show()
+        km_enter_line.show()
+        km_translate_into_miles_button.setText('Перевести в цельсии')
+        km_translate_into_miles_button.setStyleSheet('background-color: gray;font-size: 14pt;')
+        km_translate_into_miles_button.clicked.connect(fars_to_km_cels)
+        label_km.setText('Введите количество\nпо Фаренгейту')
+        km_translate_into_miles_button.show()
+
+        print('Перепрофилируем кнопку')
+        back_km_button.show()
+
+    def fars_to_km_cels():
+        try:
+            except_label.hide()
+            km_value = float(km_enter_line.text())
+            km_res = f_to_c(km_value)
+            km_translate_into_miles_button.hide()
+            km_result_label.show()
+            km_result_label.setText(f'{km_res} градусов по Цельсию')
+            null_km_button.show()
+        except:
+            km_enter_line.clear()
+            except_label.show()
+
+    def show_all():
+        clear_one()
+        start_label.hide()
+        button_petrol.show()
+        button_far.show()
+        button_km.show()
+        button_cel.show()
+        button_miles.show()
+        choose_label.show()
+
+    def hide_km_widgets():
+        label_km.hide()
+        km_enter_line.hide()
+        km_translate_into_miles_button.hide()
+        km_result_label.hide()
+        null_km_button.hide()
+        back_km_button.hide()
+        except_label.hide()
+
+
+    def km_null():
+        km_enter_line.clear()
+        except_label.hide()
+        null_km_button.hide()
+        km_result_label.hide()
+        km_translate_into_miles_button.show()
+
+
+    def hide_petrol_widgets():
+        print('Запустилась функция hide_petrol_widgets')
+        spend_label.hide()
+        spend_enter_line.hide()
+
+        way_label.hide()
+        way_enter_line.hide()
+
+        price_label.hide()
+        price_enter_line.hide()
+
+        start_label.hide()
+        petrol_result_label.hide()
+
+        except_label.hide()
+        null_button.hide()
+        back_button.hide()
+
+    hide_petrol_widgets()
+    hide_km_widgets()
+
+    def hide_all():
+        print('Запустилась функция hide_all')
+        choose_label.hide()
+        button_petrol.hide()
+        button_far.hide()
+        button_cel.hide()
+        button_km.hide()
+        button_miles.hide()
+        start_label.hide()
+
+    def c_petrol():
+        print('Запустилась функция c_petrol')
+        hide_all()
+        spend_label.show()
+        spend_enter_line.show()
+        way_label.show()
+        way_enter_line.show()
+        price_label.show()
+        price_enter_line.show()
+        start_label.show()
+        back_button.show()
+
+    def clear_one():
+        print('Запустилась функция clear_one')
+        spend_enter_line.clear()
+        way_enter_line.clear()
+        price_enter_line.clear()
+        null_button.hide()
+        start_label.show()
+        petrol_result_label.hide()
+
+    def c_petrol_result():
+        print('Запустилась функция c_petrol_result')
+        try:
+            spend = float(spend_enter_line.text().replace(',', '.'))
+            way = float(way_enter_line.text().replace(',', '.'))
+            price = float(price_enter_line.text().replace(',', '.'))
+
+            petrol(spend, way, price)
+            petrol_result_label.show()
+            petrol_result_label.setText(f'{petrol(spend, way, price)} рублей')
+            start_label.hide()
+            except_label.hide()
+            null_button.show()
+        except:
+            print(Exception)
+            spend_enter_line.clear()
+            way_enter_line.clear()
+            price_enter_line.clear()
+            except_label.show()
+
+
+
+    ## Кнопки
+    button_petrol.clicked.connect(c_petrol)
+    start_label.clicked.connect(c_petrol_result)
+    null_button.clicked.connect(clear_one)
+    back_button.clicked.connect(hide_petrol_widgets)
+    back_button.clicked.connect(show_all)
+    button_km.clicked.connect(km_start)
+    # km_translate_into_miles_button.clicked.connect(km_into_miles)
+    back_km_button.clicked.connect(hide_km_widgets)
+    back_km_button.clicked.connect(show_all)
+    button_miles.clicked.connect(miles_to_km_start)
+    null_km_button.clicked.connect(km_null)
+    button_cel.clicked.connect(cels_to_km_fars_start)
+    button_far.clicked.connect(fars_to_km_cels_start)
+
+
+    window.show()
+    sys.exit(app.exec_())
+
+
+if __name__ == '__main__':
+    applic()
+
